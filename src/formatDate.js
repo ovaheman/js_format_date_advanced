@@ -17,20 +17,20 @@ function formatDate(date, fromFormat, toFormat) {
   const newFormat = toFormat.slice(0, -1);
   const oldFormat = fromFormat.slice(0, -1);
 
-  for (let i = 0; i <= dateArray.length; i++) {
-    const key = dateArray[i];
-    const value = oldFormat[i];
+  for (let i = 0; i < dateArray.length; i++) {
+    const value = dateArray[i];
+    const key = oldFormat[i];
 
-    dateObject[value] = key;
+    dateObject[key] = value;
 
-    if (value === 'YY') {
-      const yearNum = Number(key);
+    if (key === 'YY') {
+      const yearNum = Number(value);
 
-      dateObject['YYYY'] = yearNum < 30 ? '20' + key : '19' + key;
+      dateObject['YYYY'] = yearNum < 30 ? '20' + value : '19' + value;
     }
 
-    if (value === 'YYYY') {
-      dateObject['YY'] = key.slice(-2);
+    if (key === 'YYYY') {
+      dateObject['YY'] = value.slice(-2);
     }
   }
 
